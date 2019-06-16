@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>simple-site-diff: check page</title>
+	<script type='text/javascript' src='transform.js'></script>
+	<script type='text/javascript' src='url-list.js'></script>
+</head>
+<body style="padding:0; margin:0;">
+	<div style="width:100%; height:10em; background-color:#eee; border:solid 4px #aaa; overflow:scroll;">
+		<script>
+			var simple_site_diff_html = '';
+			for (var l = 0; l < simple_site_diff_data.length; l++) {
+				var o = simple_site_diff_data[l];
+				if (o) {
+					simple_site_diff_html += '<div onclick="simple_site_diff_f(' + l + ')">' + (l + 1) + ': <input type="checkbox" id="simple_site_diff_checkbox_' + l + (o.checked ? '" checked="checked"' : '"') + ' />' + o.url + '&nbsp;<input type="text" value="' + (o.text||'') + '" id="simple_site_diff_text_' + l + '" /></div>';
+				}
+			}
+			document.write(simple_site_diff_html);
+
+			function simple_site_diff_f(_l) {
+				if (document.getElementById('iframe_L').src != simple_site_diff_data[_l].url) {
+					document.getElementById('iframe_L').src = simple_site_diff_data[_l].url;
+				}
+				var url_r = simple_site_diff_transform(simple_site_diff_data[_l].url);
+				if (document.getElementById('iframe_R').src != url_r) {
+					document.getElementById('iframe_R').src = url_r;
+				}
+			}
+			function simple_site_diff_save() {
+				for (var l = 0; l < simple_site_diff_data.length; l++) {
+					simple_site_diff_data[l].checked = !!document.getElementById('simple_site_diff_checkbox_' + l).checked;
+					simple_site_diff_data[l].text = document.getElementById('simple_site_diff_text_' + l).value || '';
+				}
+				document.getElementById('simple_site_diff_out').value = 'var simple_site_diff_data = ' + JSON.stringify(simple_site_diff_data) + ';';
+				document.getElementById('simple_site_diff_out').style.display = "block";
+			}
+		</script>
+		<button type="button" onclick="simple_site_diff_save()" >Re-create data for url-list.js file</button><br/>
+		<textarea id="simple_site_diff_out" style="display:none" rows="10" cols="120"></textarea>
+	</div>
+	<iframe id="iframe_L" style="display:inline-block; width:49%; height:920px;"></iframe>
+	<iframe id="iframe_R" style="display:inline-block; width:49%; height:920px;"></iframe>
+</body>
+</html>

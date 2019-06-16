@@ -1,0 +1,3 @@
+https://developer.ibm.com/patterns/talk-to-an-app-which-which-can-create-and-manage-your-kubernetes-instances/
+https://developer.ibm.com/patterns/use-box-skills-to-gain-document-insights-with-watson-nlu/
+https://developer.ibm.com/patterns/visualize-data-with-python/

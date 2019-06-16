@@ -1,0 +1,15 @@
+{
+  "name": "simple-site-diff",
+  "version": "1.0.0",
+  "description": "This is a simple tool to check the difference of pages in 2 web site. These 2 site must have a same file tree.",
+  "main": "node-convert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xlsx": "^0.14.3"
+  }
+}
