@@ -19,7 +19,17 @@ You need to prepare one of the following;
 
 ## How to use
 
-### 1. Create a data file
+### 1. Setup the tool
+
+1. You need to download this repo - clone or download ZIP.
+2. You need to install Node.js environment (ver8 or later) on your environment.
+3. You need to install necessary packages in this repo's directory;
+
+```
+npm install
+```
+
+### 2. Create a data file
 
 The `node-convert.js` file is a simple Node.js program to convert your text/CSV/excel file to a data file, `url-list.js`.
 
@@ -40,7 +50,7 @@ node node-convert source-file.xlsx B -2 > url-list.js
 
 **Hint:** The file format of `url-list.js` is very simple, so you can create it by your hand or your tool.
 
-### 2. Update the transform function
+### 3. Update the transform function
 
 The file `transform.js` contains the definition of function like follows.
 
@@ -53,7 +63,7 @@ function simple_site_diff_transform(_url) {
 This function gets a URL of the production page (which will be shown in the left window), and returns a URL of the test page (which will be shown in the right window).
 You need to update this function to fit your environment.
 
-### 3. Open the check page
+### 4. Open the check page
 
 Open the `index.html` file by your web browser.
 
@@ -61,7 +71,7 @@ On the top, you can see the URL list which you want to check. When you click the
 
 You can use checkbox and text memo on the URL list. But it's a temporary memo, and will cleared with refresh of this web page.
 
-### 4. Save the checkbox and text memo (Optional)
+### 5. Save the checkbox and text memo (Optional)
 
 The tool's checkbox and text memo are temporary ones, and will be lost after closing.
 
